@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scripts/boot.gd" type="Script" id=1]
+[ext_resource path="res://gfx/boot_mask.png" type="Texture" id=2]
+[ext_resource path="res://gfx/boot.png" type="Texture" id=3]
+[ext_resource path="res://gfx/boot_smile.png" type="Texture" id=4]
+[ext_resource path="res://sfx/boot.ogg" type="AudioStream" id=5]
+[ext_resource path="res://sfx/boot_wink.ogg" type="AudioStream" id=6]
+[ext_resource path="res://gfx/boot_sega.png" type="Texture" id=7]
+[ext_resource path="res://gfx/boot_miga.png" type="Texture" id=8]
+
+[node name="root" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="background" type="ColorRect" parent="."]
+margin_right = 576.0
+margin_bottom = 320.0
+
+[node name="mask" type="Light2D" parent="."]
+light_mask = 2
+position = Vector2( 288, 152 )
+scale = Vector2( 0.426667, 0.426667 )
+texture = ExtResource( 2 )
+range_item_cull_mask = 2
+shadow_item_cull_mask = 2
+
+[node name="boot" type="Sprite" parent="."]
+light_mask = 2
+position = Vector2( 258, 92 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="wink" type="Sprite" parent="."]
+light_mask = 2
+position = Vector2( 289, 122 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 4 )
+hframes = 2
+
+[node name="tween" type="Tween" parent="."]
+
+[node name="boot_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+mix_target = 1
+
+[node name="wink_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -5.0
+mix_target = 1
+
+[node name="sega" type="Sprite" parent="."]
+position = Vector2( 288, 193 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 7 )
+
+[node name="miga" type="Sprite" parent="."]
+position = Vector2( 288, 209 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 8 )
+
