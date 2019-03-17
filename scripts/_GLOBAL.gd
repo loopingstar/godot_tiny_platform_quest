@@ -100,13 +100,14 @@ func scene_fade(start:int, end:int, time:float) -> Node:
 func player_dead() -> void:
 	var player = get_node("/root/scene/player")
 
-	var d = dead_scene.instance()
-	d.position = player.position
-	get_node("/root/scene").add_child(d)
+	if player:
+		var d = dead_scene.instance()
+		d.position = player.position
+		get_node("/root/scene").add_child(d)
 
-	player.queue_free()
+		player.queue_free()
 
-	$sfx/sfx_dead.play()
+		$sfx/sfx_dead.play()
 
 func save_game() -> void:
 	file.open_encrypted_with_pass(savePath, File.WRITE, passPhrase)
